@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+
+
+
+<p>
+  <strong>Weight:</strong>
+  <%= @table.weight %>
+</p>
+
+<p>
+  <strong>Bmi:</strong>
+  <%= @table.bmi %>
+</p>
+
+<p>
+  <strong>Fat:</strong>
+  <%= @table.fat %>
+</p>
+
+<p>
+  <strong>Moisture:</strong>
+  <%= @table.moisture %>
+</p>
+
+<p>
+  <strong>Muscle:</strong>
+  <%= @table.muscle %>
+</p>
+
+<p>
+  <strong>Bone:</strong>
+  <%= @table.bone %>
+</p>
+
+<p>
+  <strong>Metabolism:</strong>
+  <%= @table.metabolism %>
+</p>
+
+<p>
+  <strong>Visceral fat:</strong>
+  <%= @table.visceral_fat %>
+</p>
+
+<%= link_to 'Edit', edit_table_path(@table) %> |
+<%= link_to 'Back', tables_path %>
