@@ -1,47 +1,84 @@
-<p id="notice"><%= notice %></p>
 
 
 
+<table border="1">
+  <tr>
+  <td>
+      <strong>日付</strong>
+  </td>
+  <td>
+    <strong>体重</strong>
+  </td>
+  <td>
+    <strong>BMI</strong>
+  </td>
+  <td>
+    <strong>体脂肪</strong>
+  </td>
+  <td>
+    <strong>水分</strong>
+  </td>
+  <td>
+    <strong>筋肉量</strong>
+  </td>
+  <td>
+    <strong>骨量</strong>
+  </td>
+  <td>
+    <strong>代謝</strong>
+  </td>
+  <td>
+    <strong>体内脂肪</strong>
+  </td>
 
-<p>
-  <strong>Weight:</strong>
-  <%= @table.weight %>
-</p>
+  </tr>
+<% @tables.each do |table| %>
+<tr>
+<td>
+  <%= table.created_at %>
+</td>
+<td>
+  <%= table.weight %>kg
+</td>
+<td>
+  <%= table.bmi %>
+</td>
+<td>
+  <%= table.fat %>%
+</td>
+<td>
+  <%= table.moisture %>%
+</td>
+<td>
+  <%= table.muscle %>kg
+</td>
+<td>
+  <%= table.bone %>kg
+</td>
+<td>
+  <%= table.metabolism %>kcal
+</td>
+<td>
+  <%= table.visceral_fat %>
+</td>
 
-<p>
-  <strong>Bmi:</strong>
-  <%= @table.bmi %>
-</p>
+</tr>
+<% end %>
+</table>
 
-<p>
-  <strong>Fat:</strong>
-  <%= @table.fat %>
-</p>
 
-<p>
-  <strong>Moisture:</strong>
-  <%= @table.moisture %>
-</p>
 
-<p>
-  <strong>Muscle:</strong>
-  <%= @table.muscle %>
-</p>
+<%= line_chart @weight, width: "400px", height: "200px" %>
+<%= line_chart @bmi, width: "400px", height: "200px" %>
+<%= line_chart @fat, width: "400px", height: "200px" %>
+<%= line_chart @moisture, width: "400px", height: "200px" %>
+<%= line_chart @muscle, width: "400px", height: "200px" %>
+<%= line_chart @bone, width: "400px", height: "200px" %>
+<%= line_chart @metabolism, width: "400px", height: "200px" %>
+<%= line_chart @visceral_fat, width: "400px", height: "200px" %>
 
-<p>
-  <strong>Bone:</strong>
-  <%= @table.bone %>
-</p>
+<%= link_to '入力', new_table_path %>
+<!-- %= link_to 'Back', tables_path % -->
 
-<p>
-  <strong>Metabolism:</strong>
-  <%= @table.metabolism %>
-</p>
 
-<p>
-  <strong>Visceral fat:</strong>
-  <%= @table.visceral_fat %>
-</p>
-
-<%= link_to 'Edit', edit_table_path(@table) %> |
-<%= link_to 'Back', tables_path %>
+<% console %>

@@ -10,8 +10,18 @@
   <%= form.text_field :height %>
 </div>
 
+<div class="field">
+  <%= form.label :password, "パスワード" %>
+  <%= form.text_field :password %>
+</div>
+
+<div class="field">
+  <%= form.label :password_confirmation, "パスワード確認" %>
+  <%= form.text_field :password_confirmation %>
+</div>
+
 <div class="actions">
-  <%= form.submit %>
+  <%= form.submit "アカウント作成！"%>
 </div>
 
 <% end %>

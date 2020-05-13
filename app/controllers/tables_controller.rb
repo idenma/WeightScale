@@ -10,6 +10,29 @@ class TablesController < ApplicationController
   # GET /tables/1
   # GET /tables/1.json
   def show
+    @weight = []
+
+    @bmi = []
+    @fat = []
+    @moisture = []
+    @muscle = []
+    @bone = []
+    @metabolism = []
+    @visceral_fat = []
+
+    @tables = Table.where(user_id: @current_user.id)
+
+    @tables.each do |table|
+        @weight.push([table.created_at.strftime("%Y年 %m月 %d日"),table.weight])
+        @bmi.push([table.created_at.strftime("%Y年 %m月 %d日"),table.bmi])
+        @fat.push([table.created_at.strftime("%Y年 %m月 %d日"),table.fat])
+        @moisture.push([table.created_at.strftime("%Y年 %m月 %d日"),table.moisture])
+        @muscle.push([table.created_at.strftime("%Y年 %m月 %d日"),table.muscle])
+        @bone.push([table.created_at.strftime("%Y年 %m月 %d日"),table.bone])
+        @metabolism.push([table.created_at.strftime("%Y年 %m月 %d日"),table.metabolism])
+        @visceral_fat.push([table.created_at.strftime("%Y年 %m月 %d日"),table.visceral_fat])
+    end
+    @weight
   end
 
   # GET /tables/new
@@ -25,7 +48,6 @@ class TablesController < ApplicationController
   # POST /tables.json
   def create
     @table = Table.new(table_params)
-
     respond_to do |format|
       if @table.save
         format.html { redirect_to @table, notice: 'Table was successfully created.' }
@@ -64,7 +86,7 @@ class TablesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_table
-      @table = Table.find(params[:id])
+    @tables = Table.where(user_id: current_user.id)
     end
 
     # Only allow a list of trusted parameters through.

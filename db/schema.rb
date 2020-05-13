@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_11_061506) do
+ActiveRecord::Schema.define(version: 2020_05_12_044312) do
 
   create_table "tables", force: :cascade do |t|
     t.decimal "weight", precision: 10, scale: 1
@@ -31,6 +31,8 @@ ActiveRecord::Schema.define(version: 2020_05_11_061506) do
     t.decimal "height", precision: 10, scale: 1
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "email"
+    t.string "password_digest"
   end
 
 end
