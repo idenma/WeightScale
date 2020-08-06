@@ -1,3 +1,16 @@
 // Place all the styles related to the Tables controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.base {
+  display: flex;
+  flex-direction:colmn;
+}
+
+.line-chart {
+  width:400px;
+  flex-wrap: nowrap;
+  margin:20px;
+  box-shadow: 10px 10px 2px #eeeeee;
+
+
+}

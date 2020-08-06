@@ -10,6 +10,29 @@ class TablesController < ApplicationController
   # GET /tables/1
   # GET /tables/1.json
   def show
+
+
+
+    dbNames = ["weight","bmi","fat","moisture","muscle","bone","metabolism","visceral_fat"]
+
+     tables = Table.where(user_id: @current_user.id)
+     @count = tables.length
+
+
+    #
+    # @compiledTables = {name: "weight", data:tables.weight}
+    # @compiledTables.store(name: "bmi", data:tables.bmi)
+    # @compiledTables.store(name: "fat", data:tables.fat)
+    # @compiledTables.store(name: "moisture", data:tables.moisture)
+    # @compiledTables.store(name: "muscle", data:tables.muscle)
+    # @compiledTables.store(name: "bone", data:tables.bone)
+    # @compiledTables.store(name: "metabolism", data:tables.metabolism)
+    # @compiledTables.store(name: "visceral_fat", data:tables.visceral_fat)
+    # @compiledTables.store(name: "weight", data:tables.weight)
+    #
+
+
+    dateNotation = "%Y/%m/%d"
     @weight = []
 
     @bmi = []
@@ -21,16 +44,16 @@ class TablesController < ApplicationController
     @visceral_fat = []
 
     @tables = Table.where(user_id: @current_user.id)
-
+    @count = @tables.length
     @tables.each do |table|
-        @weight.push([table.created_at.strftime("%Y年 %m月 %d日"),table.weight])
-        @bmi.push([table.created_at.strftime("%Y年 %m月 %d日"),table.bmi])
-        @fat.push([table.created_at.strftime("%Y年 %m月 %d日"),table.fat])
-        @moisture.push([table.created_at.strftime("%Y年 %m月 %d日"),table.moisture])
-        @muscle.push([table.created_at.strftime("%Y年 %m月 %d日"),table.muscle])
-        @bone.push([table.created_at.strftime("%Y年 %m月 %d日"),table.bone])
-        @metabolism.push([table.created_at.strftime("%Y年 %m月 %d日"),table.metabolism])
-        @visceral_fat.push([table.created_at.strftime("%Y年 %m月 %d日"),table.visceral_fat])
+        @weight.push([table.created_at.strftime(dateNotation),table.weight])
+        @bmi.push([table.created_at.strftime(dateNotation),table.bmi])
+        @fat.push([table.created_at.strftime(dateNotation),table.fat])
+        @moisture.push([table.created_at.strftime(dateNotation),table.moisture])
+        @muscle.push([table.created_at.strftime(dateNotation),table.muscle])
+        @bone.push([table.created_at.strftime(dateNotation),table.bone])
+        @metabolism.push([table.created_at.strftime(dateNotation),table.metabolism])
+        @visceral_fat.push([table.created_at.strftime(dateNotation),table.visceral_fat])
     end
     @weight
   end

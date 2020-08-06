@@ -1,7 +1,7 @@
 
 
 
-<table border="1">
+<table>
   <tr>
   <td>
       <strong>日付</strong>
@@ -35,7 +35,7 @@
 <% @tables.each do |table| %>
 <tr>
 <td>
-  <%= table.created_at %>
+  <%= table.created_at.strftime("%Y/%m/%d") %>
 </td>
 <td>
   <%= table.weight %>kg
@@ -66,19 +66,51 @@
 <% end %>
 </table>
 
+<p>グラフ</p>
 
 
-<%= line_chart @weight, width: "400px", height: "200px" %>
-<%= line_chart @bmi, width: "400px", height: "200px" %>
-<%= line_chart @fat, width: "400px", height: "200px" %>
-<%= line_chart @moisture, width: "400px", height: "200px" %>
-<%= line_chart @muscle, width: "400px", height: "200px" %>
-<%= line_chart @bone, width: "400px", height: "200px" %>
-<%= line_chart @metabolism, width: "400px", height: "200px" %>
-<%= line_chart @visceral_fat, width: "400px", height: "200px" %>
+<div class="base">
+<% count = (400).to_s + "px"  %>
+<% chartHeight = "400px" %>
+<div class="line-chart">
+<%= line_chart @weight, xtitle: "体重", ytitle: "kg", suffix:"kg",width: count, height:chartHeight, discrete: true  %>
+</div>
+<div class="line-chart">
+<%= line_chart @bmi,  xtitle: "BMI",width: count, height: chartHeight %>
+</div>
+<div class="line-chart">
+<%= line_chart @fat,xtitle: "体脂肪", ytitle: "%", suffix:"%", width: count, height: chartHeight %>
+</div>
+<div class="line-chart">
+<%= line_chart @moisture,xtitle: "水分", ytitle: "%",suffix:"%",  width: count, height: chartHeight %>
+</div>
+</div>
+<div class="base">
+<div class="line-chart">
+<%= line_chart @muscle, xtitle: "筋肉量", ytitle: "kg",suffix:"kg", width: count, height: chartHeight %>
+</div>
+<div class="line-chart">
+<%= line_chart @bone,  xtitle: "骨量", ytitle: "kg",suffix:"%", width: count, height: chartHeight %>
+</div>
+<div class="line-chart">
+<%= line_chart @metabolism, xtitle: "代謝", ytitle: "kcal",suffix:"kcal",  width: count,height: chartHeight %>
+</div>
+<div class="line-chart">
+<%= line_chart @visceral_fat, xtitle: "体内脂肪", width: count,  height: chartHeight %>
+</div>
+</div>
+
+
+
+
+
 
 <%= link_to '入力', new_table_path %>
 <!-- %= link_to 'Back', tables_path % -->
 
+
+<!--%= line_chart @compiledTables.map { |compiledTable|
+    {name: compiledTable.name, data: compiledTable.data}
+} %-->
 
 <% console %>
