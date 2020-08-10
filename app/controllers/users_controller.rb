@@ -14,7 +14,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create(user_params)
-    if @user.before_save
+    if @user.save
       log_in @user
       flash[:success] = "ようこそ体重管理アプリへ！"
       redirect_to new_table_path
