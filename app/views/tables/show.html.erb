@@ -112,5 +112,6 @@
 <!--%= line_chart @compiledTables.map { |compiledTable|
     {name: compiledTable.name, data: compiledTable.data}
 } %-->
-
+<% if Rails.env.development? %>
 <% console %>
+<% end %>
