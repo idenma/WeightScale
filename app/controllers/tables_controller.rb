@@ -86,8 +86,9 @@ class TablesController < ApplicationController
   # PATCH/PUT /tables/1
   # PATCH/PUT /tables/1.json
   def update
+    @table = Table.find(params[:id])
     respond_to do |format|
-      if @table.update(table_params)
+      if @table.update_attributes(table_params)
         format.html { redirect_to @table, notice: 'Table was successfully updated.' }
         format.json { render :show, status: :ok, location: @table }
       else
@@ -115,6 +116,6 @@ class TablesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def table_params
-      params.require(:table).permit(:weight, :bmi, :fat, :moisture, :muscle, :bone, :metabolism, :visceral_fat, :user_id)
+      params.require(:table).permit(:weight, :bmi, :fat, :moisture, :muscle, :bone, :metabolism, :visceral_fat, :created_at, :user_id)
     end
 end
