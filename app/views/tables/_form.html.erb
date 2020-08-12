@@ -1,15 +1,15 @@
 <%= form_with(model: table, local: true) do |form| %>
-  <% if table.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(table.errors.count, "error") %> prohibited this table from being saved:</h2>
+  <%# if table.errors.any? %>
+    <!-- div id="error_explanation">
+      <!--h2><%#= pluralize(table.errors.count, "error") %> prohibited this table from being saved:</h2-->
 
-      <ul>
-      <% table.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+      <!--ul>
+      <%# table.errors.full_messages.each do |message| %>
+        <li><%#= message %></li>
+      <%# end %>
       </ul>
-    </div>
-  <% end %>
+    </div-->
+  <%# end %>
   <div class="field">
     <%= form.label :weight, "体重" %>
     <%= form.text_field :weight %>
@@ -48,6 +48,11 @@
   <div class="field">
     <%= form.label :visceral_fat, "内臓脂肪" %>
     <%= form.text_field :visceral_fat %>
+  </div>
+
+  <div class="field">
+    <%= form.label :created_at, "日付" %>
+    <%= form.date_select :created_at %>
   </div>
 
   <%= form.hidden_field :user_id, :value => current_user.id %>

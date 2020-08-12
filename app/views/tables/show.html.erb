@@ -30,6 +30,9 @@
   <td>
     <strong>体内脂肪</strong>
   </td>
+  <td>
+    <strong>修正</strong>
+  </td>
 
   </tr>
 <% @tables.each do |table| %>
@@ -60,6 +63,9 @@
 </td>
 <td>
   <%= table.visceral_fat %>
+</td>
+<td>
+  <%= link_to "修正", edit_table_path %>
 </td>
 
 </tr>

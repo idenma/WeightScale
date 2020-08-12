@@ -65,6 +65,7 @@ class TablesController < ApplicationController
 
   # GET /tables/1/edit
   def edit
+    @table =Table.find(params[:id])
   end
 
   # POST /tables
